@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Edit comment{% endblock title %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/topic/{{comment.topic.id}}">Back to topic</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit comment</li>
+    </ol>
+</nav>
+
+<h1>Edit comment</h1>
+
+<div class="row mt-4">
+    <div class="col-md-5">
+        <form method="post">
+            <input type="hidden" name="csrf" value="{{ csrf_token }}">
+
+            <div class="form-group">
+                <textarea class="form-control" name="text" rows="5" required>{{comment.text}}</textarea>
+            </div>
+
+            <button class="btn btn-light">Submit</button>
+            <a href="/topic/{{comment.topic.id}}" class="btn btn-dark">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

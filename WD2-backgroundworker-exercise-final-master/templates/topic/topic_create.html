@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Create topic{% endblock title %}
+
+{% block content %}
+
+<h1>Create a new topic</h1>
+
+<div class="row mt-4">
+    <div class="col-md-5">
+        <form method="post">
+            <input type="hidden" name="csrf" value="{{ csrf_token }}">
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="Topic title" required>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" name="text" rows="5" placeholder="Enter the topic content" required></textarea>
+            </div>
+
+            <button class="btn btn-light">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

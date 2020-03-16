@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock title %}
+
+{% block content %}
+
+    {% if user %}
+        <h1>Welcome to Ninja Tech Forum, {{user.username}}!</h1>
+    {% else %}
+        <h1>Welcome to Ninja Tech Forum, stranger!</h1>
+    {% endif %}
+
+	<table class="table table-hover table-striped mt-4">
+	    <tr>
+	        <th>Topic</th>
+	        <th>Author</th>
+	        <th>Date created</th>
+	    </tr>
+
+	    {% for topic in topics %}
+	    <tr>
+	        <td><a href="/topic/{{topic.id}}">{{ topic.title }}</a></td>
+	        <td>{{ topic.author.username }}</td>
+	        <td>{{ topic.created.strftime('%d %b %Y') }}</td>
+	    </tr>
+	    {% endfor %}
+	</table>
+
+{% endblock content %}
